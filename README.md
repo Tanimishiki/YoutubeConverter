@@ -4,7 +4,7 @@ I made this application because some of the websites I used before don't work an
 ![test](./Assets/screenshot1.png)
 
 # Installation
-To install choose a winrar file in the [Dist](./Dist/) folder and extract it.
+To install, select a version from below, download it, and extract it, or you can select one from the [Dist](./Dist) folder.
 
 ### Versions
 - [Latest (1.0.0)](./Dist/1.0.0%20-%20YoutubeConverter.rar)
