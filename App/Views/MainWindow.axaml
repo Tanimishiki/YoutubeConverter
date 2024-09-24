@@ -1,0 +1,107 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:App.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="350"
+        Width="450" Height="350"
+        RequestedThemeVariant="Light"
+        x:Class="App.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="{Binding Title}"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <!-- <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+    
+    <StackPanel>
+        <TextBlock Text="Youtube Converter"
+            HorizontalAlignment="Center"
+            FontSize="20"
+            Margin="20" />
+
+        <Grid ShowGridLines="False"
+            ColumnDefinitions="310, 100"
+            Margin="20, 0, 20, 20">
+
+            <TextBox Name="youtubeUrlTextBox"
+                Watermark="Youtube URL"
+                Margin="0, 0, 5, 0"
+                Grid.Column="0" />
+
+            <Button Name="convertButton"
+                Click="ConvertButtonClicked"
+                HorizontalAlignment="Center"
+                Background="#ffa514"
+                Width="100"
+                Grid.Column="1">
+                <TextBlock Text="Convert" HorizontalAlignment="Center" />
+            </Button>
+        </Grid>
+        
+        <StackPanel Name="convertOptions"
+            Orientation="Horizontal"
+            Spacing="20"
+            HorizontalAlignment="Center">
+            <RadioButton GroupName="ConvertOption"
+                Content="MP4"
+                IsChecked="True" />
+            <RadioButton GroupName="ConvertOption"
+                Content="MP3"
+                IsEnabled="True" />
+        </StackPanel>
+
+        <Panel Background="#d4d4d4"
+            Margin="20"
+            Width="420"
+            Height="1"></Panel>
+        
+        <StackPanel Margin="20, 0, 20, 0"
+            Height="100">
+
+            <TextBlock Name="videoTitleTextBlock"
+                Text="[ Youtube Title ]"
+                HorizontalAlignment="Center" />
+
+            <ProgressBar Name="downloadProgressBar"
+                Minimum="0" Maximum="100" Value="0"
+                Margin="0, 10, 0, 10"
+                Foreground="#61ff4d"
+                ShowProgressText="True" />
+            
+            <Grid ShowGridLines="False"
+                ColumnDefinitions="310, 100">
+                <Button Name="downloadButton"
+                    Click="DownloadButtonClicked"
+                    Width="305"
+                    Background="#61ff4d"
+                    IsEnabled="False">
+                    <TextBlock Text="Download"
+                        HorizontalAlignment="Center" />
+                </Button>
+
+                <Button Name="cancelDownloadButton"
+                    Click="CancelDownloadButtonClicked"
+                    IsEnabled="False"
+                    Grid.Column="1"
+                    Width="100">
+                    <TextBlock Text="Cancel"
+                        HorizontalAlignment="Center" />
+                </Button>
+            </Grid>
+        </StackPanel>
+
+        <Button Click="GitHubButtonClicked"
+            HorizontalAlignment="Center">
+            <Image Source="/Assets/github.png"
+                Width="30" Height="30" />
+        </Button>
+    </StackPanel>
+</Window>
